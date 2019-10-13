@@ -4,10 +4,16 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     resolve: {
-        extensions: ['.js', '.vue']
+        extensions: ['.js', '.vue', '.css', '.json']
     },
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: [
+                  'css-loader'
+                ],
+            }, 
             {
                 test: /\.vue?$/,
                 exclude: /(node_modules)/,
