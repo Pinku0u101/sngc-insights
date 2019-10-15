@@ -1,7 +1,7 @@
 <template>
     <div class="sngc">
-        <h2>Hi {{account.user.firstName}}!</h2>
-        <p>Welcome To SNGC Insights</p>
+        <h2 class="titlebar">Hi {{account.user.firstName}}!</h2>
+        <p class="text1">Welcome To SNGC Insights</p>
         <p>DashBoard will be coming soon. Please fill form data</p>
         <em v-if="users.loading">Loading users...</em>
         <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>

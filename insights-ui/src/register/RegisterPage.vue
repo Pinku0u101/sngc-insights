@@ -1,43 +1,50 @@
 <template>
     <div class="sngc">
-        <h2>Register</h2>
+        <h2 class="titlebar">Register</h2>
         <form @submit.prevent="handleSubmit">
             <div class="form-group">
-                <label for="firstName">First Name</label>
+                <label for="firstName" class="labelClass">First Name</label>
                 <input type="text" v-model="user.firstName" v-validate="'required'" name="firstName" class="form-control" :class="{ 'is-invalid': submitted && errors.has('firstName') }" />
                 <div v-if="submitted && errors.has('firstName')" class="invalid-feedback">{{ errors.first('firstName') }}</div>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
+                <label for="lastName" class="labelClass">Last Name</label>
                 <input type="text" v-model="user.lastName" v-validate="'required'" name="lastName" class="form-control" :class="{ 'is-invalid': submitted && errors.has('lastName') }" />
                 <div v-if="submitted && errors.has('lastName')" class="invalid-feedback">{{ errors.first('lastName') }}</div>
             </div>
-            <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" v-model="user.email" v-validate="'required'" name="email" class="form-control" :class="{ 'is-invalid': submitted && errors.has('email') }" />
-            <div v-if="submitted && errors.has('email')" class="invalid-feedback">{{ errors.first('email') }}</div>
+
+           <div class="form-group">
+            <label for="age" class="labelClass">Age</label>
+            <input type="age" v-model="user.age" v-validate="'required'" id="age" name="age" class="form-control" :class="{ 'is-invalid': submitted && errors.has('age') }" />
+             <div v-if="submitted && errors.has('age')" class="invalid-feedback">{{ errors.first('age') }}</div>
             </div>
 
             <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" v-model="user.phoneNumber" v-validate="'required'" name="phoneNumber" class="form-control" :class="{ 'is-invalid': submitted && errors.has('phoneNumber') }" />
+            <label for="email" class="labelClass">Email</label>
+            <input type="email" v-model="user.email" v-validate="'required|email'" id="email" name="email" class="form-control" :class="{ 'is-invalid': submitted && errors.has('email') }" />
+             <div v-if="submitted && errors.has('email')" class="invalid-feedback">{{ errors.first('email') }}</div>
+            </div>
+
+            <div class="form-group">
+            <label for="phoneNumber" class="labelClass">Phone Number</label>
+            <input type="text" v-model="user.phoneNumber" v-validate="'required: true, min: 9'" name="phoneNumber" class="form-control" :class="{ 'is-invalid': submitted && errors.has('phoneNumber') }" />
             <div v-if="submitted && errors.has('phoneNumber')" class="invalid-feedback">{{ errors.first('phoneNumber') }}</div>
             </div>
             
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username" class="labelClass">Username</label>
                 <input type="text" v-model="user.username" v-validate="'required'" name="username" class="form-control" :class="{ 'is-invalid': submitted && errors.has('username') }" />
                 <div v-if="submitted && errors.has('username')" class="invalid-feedback">{{ errors.first('username') }}</div>
             </div>
             <div class="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" class="labelClass">Password</label>
                 <input type="password" v-model="user.password" v-validate="{ required: true, min: 6 }" name="password" class="form-control" :class="{ 'is-invalid': submitted && errors.has('password') }" />
                 <div v-if="submitted && errors.has('password')" class="invalid-feedback">{{ errors.first('password') }}</div>
             </div>
             <div class="form-button">
-                <button class="btn btn-primary" :disabled="status.registering">Register</button>
+                <button class="btn btn-primary" :disabled="status.registering" style="border-style: ridge;font-size: 20px;background-color: cornflowerblue;color:white;text-decoration: none;border-width: 5px;">Register</button>
                 <img v-show="status.registering" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                <router-link to="/login" class="btn btn-link">Cancel</router-link>
+                <router-link to="/login" class="btn btn-link" style="border-style: ridge;font-size: 20px;background-color: cornflowerblue;color:white;text-decoration: none;border-width: 5px;">Cancel</router-link>
             </div>
         </form>
     </div>
@@ -52,10 +59,12 @@ export default {
             user: {
                 firstName: '',
                 lastName: '',
+                age:'',
                 email: '',
                 phoneNumber: '',
                 username: '',
-                password: ''
+                password: '',
+                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
             },
             submitted: false
         }
@@ -72,7 +81,9 @@ export default {
                     this.register(this.user);
                 }
             });
+        
         }
+
     }
 };
 </script>
