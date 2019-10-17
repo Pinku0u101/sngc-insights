@@ -8,10 +8,11 @@
 		<version>2.1.9.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sngc</groupId>
-	<artifactId>com.sngc</artifactId>
+	<groupId>com.insight</groupId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user-service</name>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -32,93 +33,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orientdb-core</artifactId>
-            <version>3.0.23</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orientdb-gremlin</artifactId>
-            <version>3.0.23</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>spring-data-orientdb-graph</artifactId>
-            <version>0.14</version>
-        </dependency>
-        <!--<dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orientdb-jdbc</artifactId>
-            <version>2.0.8</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>orientdb-driver</artifactId>
-            <version>0.0.9</version>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>diana-api</artifactId>
-            <version>0.0.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>diana-driver-commons</artifactId>
-            <version>0.0.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>diana-core</artifactId>
-            <version>0.0.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>jnosql-query-api</artifactId>
-            <version>0.0.9</version>
-        </dependency>-->
-
-        <dependency>
-            <groupId>org.jnosql.artemis</groupId>
-            <artifactId>artemis-graph</artifactId>
-            <version>0.0.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tinkerpop</groupId>
-            <artifactId>orientdb-gremlin</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tinkerpop</groupId>
-            <artifactId>gremlin-groovy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
-
-    </dependencies>
+		<dependency>
+			<groupId>com.orientechnologies</groupId>
+			<artifactId>orientdb-core</artifactId>
+			<version>3.0.23</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
