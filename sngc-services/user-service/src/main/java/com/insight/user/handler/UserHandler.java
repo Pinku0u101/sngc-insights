@@ -29,7 +29,7 @@ public class UserHandler
         if( loginDetailsfromDb.getUserName().equals( loginDetails.getUserName() ) &&
                  loginDetailsfromDb.getPassword().equals( loginDetails.getPassword() ) )
         {
-            userToken = new UserToken(loginDetails.getUserName(), loginDetailsfromDb.getFirstName(), UUID.randomUUID().toString() );
+            userToken = new UserToken(loginDetails.getUserName(), loginDetailsfromDb.getFirstName(), loginDetailsfromDb.getOccupation(), UUID.randomUUID().toString() );
         }
 
 

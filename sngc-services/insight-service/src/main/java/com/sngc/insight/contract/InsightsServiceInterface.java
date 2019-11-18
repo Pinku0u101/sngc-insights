@@ -1,19 +1,23 @@
 package com.sngc.insight.contract;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface InsightsServiceInterface
 {
-    @GetMapping
-    public void getInsight();
+    @PostMapping("insights")
+    public Map<String, Map<String, List<String>>> getInsight( @RequestBody Map<String, String> UserIds );
 
-    @PostMapping
+    @PostMapping("insights/create")
     public void createInsight();
 
-    @PostMapping
+    @PostMapping("insights/create/prop")
     public void createProperties();
 
-    @GetMapping
+    @GetMapping("insights/prop")
     public void getProperties();
 }

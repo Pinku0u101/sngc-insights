@@ -9,11 +9,13 @@ public class LoginDetails
 {
     private String firstName;
     private String userName;
+    private String occupation;
     private String password;
 
     @JsonCreator
     public LoginDetails( @JsonProperty(value = "username", required = true ) String userName,
                          @JsonProperty(value = "password", required = true ) String password,
+                         @JsonProperty(value = "occupation" )String occupation,
                          @JsonProperty(value = "firstName" )String firstName)
     {
         Objects.requireNonNull( userName, "userName must not be null" );
@@ -21,6 +23,7 @@ public class LoginDetails
 
         this.userName = userName;
         this.password = password;
+        this.occupation = occupation;
         this.firstName = firstName;
     }
 
@@ -38,6 +41,14 @@ public class LoginDetails
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation( String occupation ) {
+        this.occupation = occupation;
     }
 
     public String getFirstName()

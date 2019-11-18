@@ -6,10 +6,12 @@ public class UserToken
 {
     private String userName;
     private String firstName;
+    private String occupation;
     private String token;
 
     public UserToken( String userName,
                       String firstName,
+                      String occupation,
                       String token )
     {
         Objects.requireNonNull( userName, "userName must not be null" );
@@ -18,6 +20,7 @@ public class UserToken
 
         this.userName = userName;
         this.token = token;
+        this.occupation = occupation;
         this.firstName = firstName;
     }
 
@@ -35,6 +38,14 @@ public class UserToken
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation( String occupation ) {
+        this.occupation = occupation;
     }
 
     public String getFirstName() {

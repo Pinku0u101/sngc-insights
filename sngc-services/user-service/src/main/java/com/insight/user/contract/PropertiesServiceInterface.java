@@ -1,12 +1,11 @@
 package com.insight.user.contract;
 
-import java.util.Map;
-
+import com.insight.user.model.Properties;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 public interface PropertiesServiceInterface
 {
     @PostMapping("properties/create")
-    public Map<String, String> createProperties( @RequestBody Map<String, String> properties );
+    public Properties createProperties( @RequestBody Properties properties );
 }

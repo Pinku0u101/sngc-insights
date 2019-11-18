@@ -1,41 +1,96 @@
 package com.insight.user.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import com.insight.user.model.LoginDetails;
+import com.insight.user.model.SearchDetails;
 import com.insight.user.model.User;
 import com.orientechnologies.orient.core.db.ODatabaseSession;
 import com.orientechnologies.orient.core.db.OrientDB;
 import com.orientechnologies.orient.core.db.OrientDBConfig;
+import com.orientechnologies.orient.core.record.OEdge;
 import com.orientechnologies.orient.core.record.OElement;
+import com.orientechnologies.orient.core.record.OVertex;
 import com.orientechnologies.orient.core.sql.executor.OResult;
 import com.orientechnologies.orient.core.sql.executor.OResultSet;
 
 public class UserRepository
 {
-    public void createConnection(User user)
+    public void createConnection( User user )
     {
-        OrientDB orientDB = new OrientDB("plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/", OrientDBConfig.defaultConfig());
+        OrientDB orientDB = new OrientDB( "plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/", OrientDBConfig.defaultConfig() );
 
-        ODatabaseSession db = orientDB.open("Insights", "admin", "admin");
+        ODatabaseSession db = orientDB.open( "Insights", "admin", "admin" );
 
-        try {
-            OElement userVertex = db.newInstance("Users");
-            userVertex.setProperty("id", user.getId());
+        try
+        {
+            OVertex userVertex = db.newVertex("Users");
+            userVertex.setProperty("id", user.getId().toLowerCase());
             userVertex.setProperty("age",user.getAge());
-            userVertex.setProperty("firstName",user.getFirstName());
-            userVertex.setProperty("lastName",user.getLastName());
+            userVertex.setProperty("firstName",user.getFirstName().toLowerCase());
+            userVertex.setProperty("lastName",user.getLastName().toLowerCase());
             //userVertex.setProperty("gender", Gender.FEMALE.toString());
-            userVertex.setProperty( "email", user.getEmail());
-            userVertex.setProperty("phoneNumber", user.getPhoneNumber());
-            userVertex.setProperty("userName", user.getUserName());
-            userVertex.setProperty( "password", user.getPassword());
+            userVertex.setProperty( "email", user.getEmail().toLowerCase());
+            userVertex.setProperty("phoneNumber", user.getPhoneNumber().toLowerCase());
+            userVertex.setProperty( "occupation", user.getOccupation().toLowerCase() );
+            userVertex.setProperty("userName", user.getUserName().toLowerCase());
+            userVertex.setProperty( "password", user.getPassword().toLowerCase());
 
             userVertex.save();
+
+            String statement = "SELECT FROM Occupation WHERE name = ? ";
+            OResultSet rs = db.query(statement, user.getOccupation().toLowerCase() );
+
+            while(rs.hasNext())
+            {
+                OResult row = rs.next();
+
+                Optional<OVertex> oVertexOptional = row.getVertex();
+
+                OVertex ov = oVertexOptional.get();
+
+                OEdge oEdge = db.newEdge( userVertex, ov, "is"+user.getOccupation() );
+                oEdge.save();
+            }
+
+            String statement1 = "SELECT FROM Countries WHERE name = ? ";
+            OResultSet rs1 = db.query(statement1, user.getCountry().toLowerCase() );
+
+            while(rs1.hasNext())
+            {
+                OResult row = rs1.next();
+
+                Optional<OVertex> oVertexOptional = row.getVertex();
+
+                OVertex ov = oVertexOptional.get();
+
+                OEdge oEdge = db.newEdge( userVertex, ov, "livesIn" );
+                oEdge.save();
+            }
+
+            String statement2 = "SELECT FROM College WHERE name = ? ";
+            OResultSet rs2 = db.query(statement2, user.getCollege() );
+
+            while(rs2.hasNext())
+            {
+                OResult row = rs2.next();
+
+                Optional<OVertex> oVertexOptional = row.getVertex();
+
+                OVertex ov = oVertexOptional.get();
+
+                OEdge oEdge = db.newEdge( userVertex, ov, "studiesAt" );
+                oEdge.save();
+            }
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException( e.getMessage() + e.getCause() );
         }
-        finally {
+        finally
+        {
             db.close();
             orientDB.close();
         }
@@ -46,30 +101,74 @@ public class UserRepository
 
     public LoginDetails getUserDetails( LoginDetails loginDetails)
     {
-        OrientDB orientDB = new OrientDB("plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/", OrientDBConfig.defaultConfig());
+        OrientDB orientDB = new OrientDB( "plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/", OrientDBConfig.defaultConfig() );
 
-        ODatabaseSession db = orientDB.open("Insights", "admin", "admin");
+        ODatabaseSession db = orientDB.open( "Insights", "admin", "admin" );
 
         LoginDetails loginDetailsFromDb = null;
-        try {
+        try
+        {
             String statement = "SELECT FROM Users WHERE userName = ? and password = ?";
-            OResultSet rs = db.query(statement, loginDetails.getUserName(), loginDetails.getPassword() );
-            while(rs.hasNext()){
+            OResultSet rs = db.query(statement, loginDetails.getUserName().toLowerCase(), loginDetails.getPassword().toLowerCase() );
+
+            while( rs.hasNext() )
+            {
                 OResult row = rs.next();
 
-                loginDetailsFromDb = new LoginDetails( row.getProperty("userName"), row.getProperty("password"), row.getProperty("firstName") );
+                loginDetailsFromDb = new LoginDetails( row.getProperty( "userName" ), row.getProperty( "password" ), row.getProperty( "occupation" ), row.getProperty( "firstName" ) );
 
             }
             rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+        } catch (Exception e)
+        {
+            throw new RuntimeException( e.getMessage() );
         }
-        finally {
+        finally
+        {
 
             db.close();
             orientDB.close();
         }
 
         return loginDetailsFromDb;
+    }
+
+    public List<SearchDetails> getSearchDetails( String firstName, String lastName )
+    {
+        OrientDB orientDB = new OrientDB( "plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/", OrientDBConfig.defaultConfig() );
+
+        ODatabaseSession db = orientDB.open( "Insights", "admin", "admin" );
+
+        List<SearchDetails> searchDetailsList = new ArrayList<>();
+
+        try
+        {
+            String statement = "SELECT FROM Users WHERE firstName = ? and lastName = ?";
+            OResultSet rs = db.query( statement, firstName.toLowerCase(), lastName.toLowerCase() );
+
+            SearchDetails searchDetails = null;
+
+            while( rs.hasNext() )
+            {
+                OResult row = rs.next();
+
+                searchDetails = new SearchDetails( row.getProperty( "id" ), row.getProperty( "userName" ), row.getProperty( "firstName" ) + " " + row.getProperty( "lastName" ), row.getProperty( "occupation" ) );
+
+                searchDetailsList.add( searchDetails );
+
+            }
+            rs.close();
+        } catch (Exception e)
+        {
+            throw new RuntimeException( e.getMessage() );
+        }
+        finally
+        {
+
+            db.close();
+            orientDB.close();
+        }
+
+        return searchDetailsList;
     }
 }

@@ -19,7 +19,7 @@ public class UserServiceImplementation implements UserServiceInterface
     @Override
     public User getUser()
     {
-        User newUser = new User("Aswathy", "Ashok", 22, Gender.FEMALE.toString(), "kdfkdsb","66487698","abc","abc");
+        User newUser = new User("Aswathy", "Ashok", 22, Gender.FEMALE.toString(), "kdfkdsb","66487698","abc","abc", "","","");
 
         /*userRepository = new UserRepository();
         userRepository.createConnection(newUser);
@@ -38,7 +38,7 @@ public class UserServiceImplementation implements UserServiceInterface
         }
         catch (Exception e)
         {
-
+            throw new RuntimeException( "Username or password is incorrect" );
         }
 
         return userToken;

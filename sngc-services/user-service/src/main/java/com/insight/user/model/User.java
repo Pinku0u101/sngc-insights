@@ -16,6 +16,9 @@ public class User
     private String gender;
     private String email;
     private String phoneNumber;
+    private String occupation;
+    private String college;
+    private String country;
     private String username;
     private String password;
 
@@ -26,6 +29,9 @@ public class User
                  @JsonProperty(value = "gender") String gender,
                  @JsonProperty(value = "email") String email,
                  @JsonProperty(value = "phoneNumber") String phoneNumber,
+                 @JsonProperty(value = "occupation") String occupation,
+                 @JsonProperty(value = "college") String college,
+                 @JsonProperty(value = "country") String country,
                  @JsonProperty(value = "username") String userName,
                  @JsonProperty(value = "password") String password)
     {
@@ -35,6 +41,9 @@ public class User
         //Objects.requireNonNull( gender, "gender must not be null" );
         Objects.requireNonNull( email, "email must not be null" );
         Objects.requireNonNull( phoneNumber, "phoneNumber must not be null" );
+        Objects.requireNonNull( occupation, "occupation must not be null" );
+        Objects.requireNonNull( college, "college must not be null" );
+        Objects.requireNonNull( country, "country must not be null" );
         Objects.requireNonNull( userName, "userName must not be null" );
         Objects.requireNonNull( password, "password must not be null" );
 
@@ -45,6 +54,9 @@ public class User
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.occupation = occupation;
+        this.college = college;
+        this.country = country;
         this.username = userName;
         this.password = password;
     }
@@ -103,6 +115,42 @@ public class User
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getOccupation()
+    {
+        return occupation;
+    }
+
+    public void setOccupation( String occupation )
+    {
+        this.occupation = occupation;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege( String college ) {
+        this.college = college;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry( String country ) {
+        this.country = country;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername( String username )
+    {
+        this.username = username;
     }
 
     public String getUserName() {

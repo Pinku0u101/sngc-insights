@@ -31,7 +31,7 @@ public class ResgistrationServiceImplementation implements RegistrationServiceIn
         {
             //TODO: improve exception handling
             System.out.print( e.getCause() );
-            this.throwNewUserRegistrationException(e.getMessage());
+            this.throwNewUserRegistrationException( "Sorry, couldn't create user ");
         }
 
         return user;
@@ -39,6 +39,6 @@ public class ResgistrationServiceImplementation implements RegistrationServiceIn
 
     private String throwNewUserRegistrationException( String message )
     {
-        throw new RuntimeException( "user couldn't be created " + message );
+        throw new RuntimeException( message );
     }
 }

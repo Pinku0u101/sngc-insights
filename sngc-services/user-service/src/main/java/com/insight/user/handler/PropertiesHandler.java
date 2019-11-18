@@ -1,7 +1,16 @@
 package com.insight.user.handler;
 
-/**
- * Created by prakashp on 17/10/19.
- */
-public class PropertiesHandler {
+import com.insight.user.model.Properties;
+import com.insight.user.repository.PropertiesRepository;
+
+public class PropertiesHandler
+{
+    private PropertiesRepository propertiesRepository;
+
+    public void createProperties( Properties properties )
+    {
+        propertiesRepository = new PropertiesRepository();
+
+        propertiesRepository.createProperties( properties );
+    }
 }
