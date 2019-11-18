@@ -78,8 +78,8 @@
     </network>
     <storages/>
     <users>
-        <user resources="*" password="{PBKDF2WithHmacSHA256}A1D2D56DA6C50BAF8D763CB2190CBCA5BA1AD59827EA6049:C5C348759068FBA3C34BF0F3269C7839153D7DFB3FFFF9CC:65536" name="root"/>
-        <user resources="connect,server.listDatabases,server.dblist" password="{PBKDF2WithHmacSHA256}2B571C8B0AA69B2EDCB1CCFA8AEF3CFE5FD9618982614F5E:B32983128875C144A4FCBC56B04C4541901F1A55392217D6:65536" name="guest"/>
+        <user resources="*" password="{PBKDF2WithHmacSHA256}3800B65E964E634EAEED79CF8728B0160130015F0F416C72:CB36208D143CADFB98BF58FCCB2BF07ABB48393268F93CBD:65536" name="root"/>
+        <user resources="connect,server.listDatabases,server.dblist" password="{PBKDF2WithHmacSHA256}CC63C600EC3116EEC3B5EFD09553B660D5BD4E3FC0F9383F:F772091427F3D28E234F0730E50F9E1165B2E602C618A9FA:65536" name="guest"/>
     </users>
     <properties>
         <entry value="false" name="profiler.enabled"/>

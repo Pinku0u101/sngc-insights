@@ -1,85 +1,48 @@
 
-2019-10-15 14:45:10:585 INFO  Default limit of open files (512) will be used. [ONative]
-2019-10-15 14:45:10:596 INFO  Loading configuration from: /Users/prakashp/sngc-insights/orientdb-3.0.22/config/orientdb-server-config.xml... [OServerConfigurationLoaderXml]
-2019-10-15 14:45:10:793 INFO  OrientDB Server v3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x) is starting up... [OServer]
-2019-10-15 14:45:10:858 INFO  17179869184 B/16384 MB/16 GB of physical memory were detected on machine [ONative]
-2019-10-15 14:45:10:858 INFO  Detected memory limit for current process is 17179869184 B/16384 MB/16 GB [ONative]
-2019-10-15 14:45:10:859 INFO  JVM can use maximum 1963MB of heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
-2019-10-15 14:45:10:860 INFO  Because OrientDB is running outside a container 12% of memory will be left unallocated according to the setting 'memory.leftToOS' not taking into account heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
-2019-10-15 14:45:10:862 INFO  OrientDB auto-config DISKCACHE=12,454MB (heap=1,963MB os=16,384MB) [orientechnologies]
-2019-10-15 14:45:10:862 INFO  System is started under an effective user : `prakashp` [OEngineLocalPaginated]
-2019-10-15 14:45:10:863 INFO  Allocation of 189300 pages. [OEngineLocalPaginated]
-2019-10-15 14:45:11:114 INFO  WAL maximum segment size is set to 6,144 MB [OrientDBDistributed]
-2019-10-15 14:45:11:115 INFO  Databases directory: /Users/prakashp/sngc-insights/orientdb-3.0.22/databases [OServer]
-2019-10-15 14:45:11:187 INFO  Page size for WAL located in /Users/prakashp/sngc-insights/orientdb-3.0.22/databases/OSystem is set to 4096 bytes. [OCASDiskWriteAheadLog]
-2019-10-15 14:45:11:606 INFO  Storage 'plocal:/Users/prakashp/sngc-insights/orientdb-3.0.22/databases/OSystem' is opened under OrientDB distribution : 3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x) [OLocalPaginatedStorage]
-2019-10-15 14:45:11:989 INFO  Listening binary connections on 0.0.0.0:2424 (protocol v.37, socket=default) [OServerNetworkListener]
-2019-10-15 14:45:11:992 INFO  Listening http connections on 0.0.0.0:2480 (protocol v.10, socket=default) [OServerNetworkListener]
-2019-10-15 14:45:11:999 INFO  Installing dynamic plugin 'orientdb-studio-3.0.22.zip'... [OServerPluginManager]
-2019-10-15 14:45:12:004 INFO  Installing dynamic plugin 'orientdb-neo4j-importer-plugin-3.0.22-dist.jar'... [OServerPluginManager]
-2019-10-15 14:45:12:008 INFO  Installing dynamic plugin 'orientdb-teleporter-3.0.22.jar'... [OServerPluginManager]
-2019-10-15 14:45:12:013 INFO  Installing dynamic plugin 'orientdb-etl-3.0.22.jar'... [OServerPluginManager]
-2019-10-15 14:45:12:016 INFO  ODefaultPasswordAuthenticator is active [ODefaultPasswordAuthenticator]
-2019-10-15 14:45:12:017 INFO  OServerConfigAuthenticator is active [OServerConfigAuthenticator]
-2019-10-15 14:45:12:018 INFO  OSystemUserAuthenticator is active [OSystemUserAuthenticator]
-2019-10-15 14:45:12:018 INFO  [OVariableParser.resolveVariables] Property not found: distributed [orientechnologies]
-2019-10-15 14:45:12:026 WARNI Authenticated clients can execute any kind of code into the server by using the following allowed languages: [sql] [OServerSideScriptInterpreter]
-2019-10-15 14:45:12:030 INFO  OrientDB Studio available at http://192.168.29.239:2480/studio/index.html [OServer]
-2019-10-15 14:45:12:030 INFO  OrientDB Server is active v3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x). [OServer]
-2019-10-15 14:46:52:307 INFO  Page size for WAL located in /Users/prakashp/sngc-insights/orientdb-3.0.22/databases/Insights is set to 4096 bytes. [OCASDiskWriteAheadLog]
-2019-10-15 14:46:52:553 INFO  Storage 'plocal:/Users/prakashp/sngc-insights/orientdb-3.0.22/databases/Insights' is opened under OrientDB distribution : 3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x) [OLocalPaginatedStorage]$ANSI{green {db=Insights}} Exception during index 'Users.id' creation
-com.orientechnologies.orient.core.storage.ORecordDuplicatedException: Cannot index record #33:1: found duplicated key '1' in index 'Users.id' previously assigned to the record #33:0
-	DB name="Insights" INDEX=Users.id RID=#33:0
-	at com.orientechnologies.orient.core.index.OIndexUnique.lambda$new$0(OIndexUnique.java:46)
-	at com.orientechnologies.orient.core.storage.index.sbtree.singlevalue.OCellBTreeSingleValue.update(OCellBTreeSingleValue.java:261)
-	at com.orientechnologies.orient.core.storage.index.sbtree.singlevalue.OCellBTreeSingleValue.validatedPut(OCellBTreeSingleValue.java:218)
-	at com.orientechnologies.orient.core.index.engine.v1.OCellBTreeSingleValueIndexEngine.validatedPut(OCellBTreeSingleValueIndexEngine.java:164)
-	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.doValidatedPutIndexValue(OAbstractPaginatedStorage.java:3039)
-	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.validatedPutIndexValue(OAbstractPaginatedStorage.java:3011)
-	at com.orientechnologies.orient.core.index.OIndexUnique.put(OIndexUnique.java:72)
-	at com.orientechnologies.orient.core.index.OIndexUnique.put(OIndexUnique.java:36)
-	at com.orientechnologies.orient.core.index.OIndexAbstract.populateIndex(OIndexAbstract.java:831)
-	at com.orientechnologies.orient.core.index.OIndexAbstract.indexCluster(OIndexAbstract.java:929)
-	at com.orientechnologies.orient.core.index.OIndexAbstract.fillIndex(OIndexAbstract.java:494)
-	at com.orientechnologies.orient.core.index.OIndexAbstract.create(OIndexAbstract.java:226)
-	at com.orientechnologies.orient.core.index.OIndexOneValue.create(OIndexOneValue.java:86)
-	at com.orientechnologies.orient.core.index.OIndexOneValue.create(OIndexOneValue.java:45)
-	at com.orientechnologies.orient.core.index.OIndexManagerShared.createIndex(OIndexManagerShared.java:165)
-	at com.orientechnologies.orient.core.index.OIndexManagerProxy.createIndex(OIndexManagerProxy.java:90)
-	at com.orientechnologies.orient.core.metadata.schema.OClassImpl.createIndex(OClassImpl.java:1164)
-	at com.orientechnologies.orient.core.sql.parser.OCreateIndexStatement.getoIndex(OCreateIndexStatement.java:133)
-	at com.orientechnologies.orient.core.sql.parser.OCreateIndexStatement.execute(OCreateIndexStatement.java:119)
-	at com.orientechnologies.orient.core.sql.parser.OCreateIndexStatement.executeDDL(OCreateIndexStatement.java:54)
-	at com.orientechnologies.orient.core.sql.executor.ODDLExecutionPlan.executeInternal(ODDLExecutionPlan.java:55)
-	at com.orientechnologies.orient.core.sql.parser.ODDLStatement.execute(ODDLStatement.java:42)
-	at com.orientechnologies.orient.core.sql.parser.OStatement.execute(OStatement.java:79)
-	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentEmbedded.command(ODatabaseDocumentEmbedded.java:568)
-	at com.orientechnologies.orient.server.network.protocol.http.command.post.OServerCommandPostCommand.executeStatement(OServerCommandPostCommand.java:189)
-	at com.orientechnologies.orient.server.network.protocol.http.command.post.OServerCommandPostCommand.execute(OServerCommandPostCommand.java:95)
-	at com.orientechnologies.orient.server.network.protocol.http.command.post.OServerCommandPostCommandGraph.execute(OServerCommandPostCommandGraph.java:36)
-	at com.orientechnologies.orient.server.network.protocol.http.ONetworkProtocolHttpAbstract.service(ONetworkProtocolHttpAbstract.java:228)
-	at com.orientechnologies.orient.server.network.protocol.http.ONetworkProtocolHttpAbstract.execute(ONetworkProtocolHttpAbstract.java:707)
-	at com.orientechnologies.common.thread.OSoftThread.run(OSoftThread.java:69)
-
-2019-10-15 16:04:39:770 WARNI Received signal: SIGINT [OSignalHandler]
-2019-10-15 16:04:39:771 INFO  OrientDB Server is shutting down... [OServer]
-2019-10-15 16:04:39:772 INFO  Shutting down listeners: [OServer]
-2019-10-15 16:04:39:772 INFO  - ONetworkProtocolBinary /0.0.0.0:2424: [OServer]
-2019-10-15 16:04:39:774 INFO  - ONetworkProtocolHttpDb /0.0.0.0:2480: [OServer]
-2019-10-15 16:04:39:774 INFO  Shutting down protocols [OServer]
-2019-10-15 16:04:39:776 INFO  Shutting down plugins: [OServerPluginManager]
-2019-10-15 16:04:39:776 INFO  - studio [OServerPluginManager]
-2019-10-15 16:04:39:777 INFO  - teleporter [OServerPluginManager]
-2019-10-15 16:04:39:777 INFO  - custom-sql-functions-manager [OServerPluginManager]
-2019-10-15 16:04:39:777 INFO  - script-interpreter [OServerPluginManager]
-2019-10-15 16:04:39:778 INFO  - etl [OServerPluginManager]
-2019-10-15 16:04:39:778 INFO  - neo4j-importer [OServerPluginManager]
-2019-10-15 16:04:39:779 INFO  Shutting down databases: [OServer]
-2019-10-15 16:04:39:779 INFO  Orient Engine is shutting down... [Orient]
-2019-10-15 16:04:39:782 INFO  - shutdown storage: OSystem... [OrientDBDistributed]
-2019-10-15 16:04:39:861 INFO  - shutdown storage: Insights... [OrientDBDistributed]
-2019-10-15 16:04:40:230 INFO  Clearing byte buffer pool [Orient]
-2019-10-15 16:04:40:230 WARNI Received signal: SIGINT [OSignalHandler]
-2019-10-15 16:04:40:446 INFO  OrientDB Engine shutdown complete [Orient]
-2019-10-15 16:04:40:446 INFO  OrientDB Server shutdown complete
+2019-11-17 22:29:08:818 INFO  Default limit of open files (512) will be used. [ONative]
+2019-11-17 22:29:08:829 INFO  Loading configuration from: /Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/config/orientdb-server-config.xml... [OServerConfigurationLoaderXml]
+2019-11-17 22:29:09:029 INFO  OrientDB Server v3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x) is starting up... [OServer]
+2019-11-17 22:29:09:095 INFO  17179869184 B/16384 MB/16 GB of physical memory were detected on machine [ONative]
+2019-11-17 22:29:09:096 INFO  Detected memory limit for current process is 17179869184 B/16384 MB/16 GB [ONative]
+2019-11-17 22:29:09:097 INFO  JVM can use maximum 1963MB of heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
+2019-11-17 22:29:09:097 INFO  Because OrientDB is running outside a container 12% of memory will be left unallocated according to the setting 'memory.leftToOS' not taking into account heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
+2019-11-17 22:29:09:099 INFO  OrientDB auto-config DISKCACHE=12,454MB (heap=1,963MB os=16,384MB) [orientechnologies]
+2019-11-17 22:29:09:100 INFO  System is started under an effective user : `prakashp` [OEngineLocalPaginated]
+2019-11-17 22:29:09:100 INFO  Allocation of 189300 pages. [OEngineLocalPaginated]
+2019-11-17 22:29:09:360 INFO  WAL maximum segment size is set to 6,144 MB [OrientDBDistributed]
+2019-11-17 22:29:09:361 INFO  Databases directory: /Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases [OServer]
+2019-11-17 22:29:09:432 INFO  Page size for WAL located in /Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/OSystem is set to 4096 bytes. [OCASDiskWriteAheadLog]
+2019-11-17 22:29:09:839 INFO  Storage 'plocal:/Users/prakashp/sngc-insights/sngc-insights/orientdb-3.0.22/databases/OSystem' is opened under OrientDB distribution : 3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x) [OLocalPaginatedStorage]
+2019-11-17 22:29:10:232 INFO  Listening binary connections on 0.0.0.0:2424 (protocol v.37, socket=default) [OServerNetworkListener]
+2019-11-17 22:29:10:235 INFO  Listening http connections on 0.0.0.0:2480 (protocol v.10, socket=default) [OServerNetworkListener]
+2019-11-17 22:29:10:243 INFO  Installing dynamic plugin 'orientdb-studio-3.0.22.zip'... [OServerPluginManager]
+2019-11-17 22:29:10:247 INFO  Installing dynamic plugin 'orientdb-neo4j-importer-plugin-3.0.22-dist.jar'... [OServerPluginManager]
+2019-11-17 22:29:10:252 INFO  Installing dynamic plugin 'orientdb-teleporter-3.0.22.jar'... [OServerPluginManager]
+2019-11-17 22:29:10:256 INFO  Installing dynamic plugin 'orientdb-etl-3.0.22.jar'... [OServerPluginManager]
+2019-11-17 22:29:10:260 INFO  ODefaultPasswordAuthenticator is active [ODefaultPasswordAuthenticator]
+2019-11-17 22:29:10:260 INFO  OServerConfigAuthenticator is active [OServerConfigAuthenticator]
+2019-11-17 22:29:10:261 INFO  OSystemUserAuthenticator is active [OSystemUserAuthenticator]
+2019-11-17 22:29:10:262 INFO  [OVariableParser.resolveVariables] Property not found: distributed [orientechnologies]
+2019-11-17 22:29:10:268 WARNI Authenticated clients can execute any kind of code into the server by using the following allowed languages: [sql] [OServerSideScriptInterpreter]
+2019-11-17 22:29:10:271 INFO  OrientDB Studio available at http://192.168.29.239:2480/studio/index.html [OServer]
+2019-11-17 22:29:10:271 INFO  OrientDB Server is active v3.0.22 - Veloce (build 8afc634a2ea9c351898ae57dee8d739ff4851252, branch 3.0.x). [OServer]
+2019-11-17 22:46:39:101 WARNI Received signal: SIGINT [OSignalHandler]
+2019-11-17 22:46:39:103 INFO  OrientDB Server is shutting down... [OServer]
+2019-11-17 22:46:39:103 INFO  Shutting down listeners: [OServer]
+2019-11-17 22:46:39:104 INFO  - ONetworkProtocolBinary /0.0.0.0:2424: [OServer]
+2019-11-17 22:46:39:105 INFO  - ONetworkProtocolHttpDb /0.0.0.0:2480: [OServer]
+2019-11-17 22:46:39:105 INFO  Shutting down protocols [OServer]
+2019-11-17 22:46:39:106 INFO  Shutting down plugins: [OServerPluginManager]
+2019-11-17 22:46:39:107 INFO  - studio [OServerPluginManager]
+2019-11-17 22:46:39:107 INFO  - teleporter [OServerPluginManager]
+2019-11-17 22:46:39:107 INFO  - custom-sql-functions-manager [OServerPluginManager]
+2019-11-17 22:46:39:108 INFO  - script-interpreter [OServerPluginManager]
+2019-11-17 22:46:39:108 INFO  - etl [OServerPluginManager]
+2019-11-17 22:46:39:109 INFO  - neo4j-importer [OServerPluginManager]
+2019-11-17 22:46:39:110 INFO  Shutting down databases: [OServer]
+2019-11-17 22:46:39:110 INFO  Orient Engine is shutting down... [Orient]
+2019-11-17 22:46:39:111 INFO  - shutdown storage: OSystem... [OrientDBDistributed]
+2019-11-17 22:46:39:347 INFO  Clearing byte buffer pool [Orient]
+2019-11-17 22:46:39:483 INFO  OrientDB Engine shutdown complete [Orient]
+2019-11-17 22:46:39:484 INFO  OrientDB Server shutdown complete
  [OServer]
