@@ -28,6 +28,7 @@ export function configureFakeBackend() {
                             lastName: user.lastName,
                             email: user.email,
                             phoneNumber: user.phoneNumber,
+                            occupation: user.occupation,
                             age: user.age,
                             token: 'fake-jwt-token'
                         };

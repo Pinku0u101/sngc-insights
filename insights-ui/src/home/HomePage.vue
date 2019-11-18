@@ -4,7 +4,6 @@
         <p class="text1">Welcome To SNGC Insights</p>
         <p>DashBoard will be coming soon. Please fill form data</p>
         <em v-if="users.loading">Loading users...</em>
-        <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
         <p>
             <router-link to="/login" class="router-link">Logout</router-link>
         </p>

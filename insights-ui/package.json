@@ -6,9 +6,15 @@
     "start": "webpack-dev-server --open"
   },
   "dependencies": {
+    "apexcharts": "^3.10.1",
+    "chart.js": "^2.9.2",
     "vee-validate": "^2.2.8",
     "vue": "^2.6.10",
+    "vue-apexcharts": "^1.5.1",
+    "vue-chartjs": "^3.5.0",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.6",
+    "vue-tiny-tabs": "^1.0.2",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
